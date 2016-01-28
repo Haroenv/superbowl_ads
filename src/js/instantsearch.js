@@ -1,6 +1,8 @@
 'use strict';
 
+//until 1.2 is released
 let instantsearch = require('instantsearch.js');
+const inceptionWidget = require('./widgets/inception.js');
 
 let search = instantsearch({
   appId: 'VC519DRAY3',
@@ -27,6 +29,22 @@ search.addWidget(
     }
   })
 );
+
+// search.addWidget(
+//   instantsearch.widgets.currentRefinedValues({
+//     container: "current-refined-values"
+//   })
+// );
+
+search.addWidget(
+  inceptionWidget({
+    container: '#inception-filters',
+    mainSearchAttribute: 'brand',
+    title: 'Brand',
+    secondarySearchAttribute: 'name',
+    index: 'brands'
+  })
+)
 
 // search.addWidget(
 //   instantsearch.widgets.refinementList({
